@@ -5,9 +5,10 @@ Proyecto DSY1105 · Desarrollo de Aplicaciones Móviles · Duoc UC.
 
 | Microservicio | Puerto | Base de datos | Qué hace | Estado |
 |---|---|---|---|---|
-| `ms-contenidos` | 9091 | `bd_contenidos` | Programas, historias e indicadores de impacto, productos y categorías | ✅ listo |
+| `ms-contenidos` | 9091 | `bd_contenidos` | Programas, historias e indicadores de impacto | ✅ listo |
 | `ms-vinculacion` | 9092 | `bd_vinculacion` | Solicitudes de colaboración, tipos de colaboración e historial de estados | pendiente |
 | `ms-admin` | 9093 | `bd_admin` | Login de gestores (JWT), usuarios y roles | pendiente |
+| `ms-catalogo` | 9094 | `bd_catalogo` | Productos, servicios y categorías | ✅ listo |
 
 ## Requisitos
 - JDK 17 (o superior) y la variable `JAVA_HOME` apuntando a él
@@ -25,4 +26,4 @@ cd ms-contenidos
 ```
 Para correr las pruebas unitarias: `.\mvnw.cmd test`. Para generar el .jar: `.\mvnw.cmd clean package`.
 
-Ver `ms-contenidos/README.md` para los endpoints y cómo probarlos.
+Cada microservicio tiene su propio `README.md` con los endpoints y cómo probarlos (por ejemplo `ms-contenidos/README.md` y `ms-catalogo/README.md`).

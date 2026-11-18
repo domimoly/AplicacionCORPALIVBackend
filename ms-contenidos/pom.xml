@@ -13,7 +13,7 @@
 	<artifactId>ms-contenidos</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ms-contenidos</name>
-	<description>Microservicio de contenidos de CORPALIV: programas, historias e indicadores de impacto, productos y categorías</description>
+	<description>Microservicio de contenidos de CORPALIV: programas, historias e indicadores de impacto</description>
 	<properties>
 		<!-- Java 17 (el de tu computador). Spring Boot 4 funciona desde Java 17 en adelante -->
 		<java.version>17</java.version>

@@ -15,6 +15,6 @@ public class SwaggerConfig {
                 .info(new Info()
                         .title("ms-contenidos | CORPALIV")
                         .version("1.0")
-                        .description("Programas, historias e indicadores de impacto, productos y categorías de CORPALIV / Alba Lab"));
+                        .description("Programas, historias e indicadores de impacto de CORPALIV / Alba Lab"));
     }
 }

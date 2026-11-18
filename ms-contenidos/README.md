@@ -1,12 +1,12 @@
 # ms-contenidos
 
-Microservicio de contenidos de CORPALIV. Puerto **9091** · Base de datos MySQL `bd_contenidos`.
+Microservicio de contenidos institucionales de CORPALIV: programas, historias e indicadores de impacto. Puerto **9091** · Base de datos MySQL `bd_contenidos`.
 Swagger (documentación interactiva): http://localhost:9091/doc/swagger-ui.html
 
 ## Arquitectura (por capas)
 ```
 cl.corpaliv.contenidos
-├── model/        Entidades (tablas): Categoria, Programa, HistoriaImpacto, IndicadorImpacto, ProductoServicio
+├── model/        Entidades (tablas): Programa, HistoriaImpacto, IndicadorImpacto
 ├── repository/   Acceso a la base de datos (Spring Data JPA)
 ├── service/      Lógica y reglas de negocio
 ├── controller/   Endpoints REST
@@ -23,15 +23,12 @@ cl.corpaliv.contenidos
 | `/programas` | ✅ publicados | ✅ todos | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `/historias` | ✅ publicadas | ✅ todas | ✅ | – | ✅ | ✅ | ✅ |
 | `/indicadores` | ✅ publicados | ✅ todos | ✅ | – | ✅ | ✅ | ✅ |
-| `/productos` | ✅ publicados | ✅ todos | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `/categorias` | ✅ | – | ✅ | – | ✅ | ✅ | ✅ |
 
 Códigos: `200` ok · `201` creado · `204` eliminado · `400` datos inválidos · `401` falta token · `404` no existe.
 
 ## Reglas de negocio
 - Los visitantes solo ven contenido **PUBLICADO** (`estadoPublicacion` o `publicado`). Los borradores solo se ven con token en `/admin`.
 - Una **historia** solo se puede publicar si está **autorizada y anonimizada** (si no, `400`).
-- Un **producto** debe pertenecer a una **categoría existente** (si no, `400`).
 - Todos los datos de ejemplo son **ficticios** (no hay datos personales ni fotos de beneficiarios).
 
 ## Probar rápido (sin token)
@@ -45,6 +42,10 @@ Ejemplo de creación (con token que entregará ms-admin):
 curl -X POST http://localhost:9091/programas -H "Authorization: Bearer <token>" -H "Content-Type: application/json" ^
   -d "{\"nombre\":\"Nuevo programa\",\"resumen\":\"Resumen\",\"estadoPublicacion\":\"BORRADOR\"}"
 ```
+
+## Relación con otros microservicios
+Los productos, servicios y categorías están en **ms-catalogo** (puerto 9094), no aquí. Cada microservicio tiene su propia base de datos.
+`GET /programas/{id}/exists` lo usa ms-vinculacion para comprobar que un programa existe antes de aceptar una solicitud.
 
 ## Seguridad
 Los tokens JWT se firman en `ms-admin` y este servicio solo los **valida** con la misma clave (`jwt.secret` en `application.properties`,
