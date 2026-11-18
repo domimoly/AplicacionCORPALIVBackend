@@ -1,0 +1,22 @@
+# Compilados
+target/
+*.class
+
+# Maven wrapper (el jar se descarga solo)
+.mvn/wrapper/maven-wrapper.jar
+
+# Logs
+logs/
+*.log
+
+# Editores
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+.factorypath
+
+# Variables y claves locales
+.env
