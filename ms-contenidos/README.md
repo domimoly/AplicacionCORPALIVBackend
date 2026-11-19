@@ -48,5 +48,6 @@ Los productos, servicios y categorías están en **ms-catalogo** (puerto 9094), 
 `GET /programas/{id}/exists` lo usa ms-vinculacion para comprobar que un programa existe antes de aceptar una solicitud.
 
 ## Seguridad
+Para obtener un token: `POST http://localhost:9093/auth/login` (ver `ms-admin/README.md`). En Swagger usa el botón **Authorize**.
 Los tokens JWT se firman en `ms-admin` y este servicio solo los **valida** con la misma clave (`jwt.secret` en `application.properties`,
 o la variable de entorno `SECRET`). La clave debe ser idéntica en los tres microservicios.

@@ -1,11 +1,15 @@
 package cl.corpaliv.contenidos.config;
 
+import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
+import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-// Datos que aparecen arriba en la página de Swagger (http://localhost:9091/doc/swagger-ui.html)
+// Datos que aparecen arriba en la página de Swagger (http://localhost:9091/doc/swagger-ui.html).
+// También agrega el botón "Authorize": ahí se pega el token JWT (sin escribir 'Bearer') para probar los endpoints protegidos.
 @Configuration
 public class SwaggerConfig {
 
@@ -15,6 +19,9 @@ public class SwaggerConfig {
                 .info(new Info()
                         .title("ms-contenidos | CORPALIV")
                         .version("1.0")
-                        .description("Programas, historias e indicadores de impacto de CORPALIV / Alba Lab"));
+                        .description("Programas, historias e indicadores de impacto de CORPALIV / Alba Lab"))
+                .components(new Components().addSecuritySchemes("bearerAuth",
+                        new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT")))
+                .addSecurityItem(new SecurityRequirement().addList("bearerAuth"));
     }
 }

@@ -7,7 +7,7 @@ Proyecto DSY1105 · Desarrollo de Aplicaciones Móviles · Duoc UC.
 |---|---|---|---|---|
 | `ms-contenidos` | 9091 | `bd_contenidos` | Programas, historias e indicadores de impacto | ✅ listo |
 | `ms-vinculacion` | 9092 | `bd_vinculacion` | Solicitudes de colaboración, tipos de colaboración e historial de estados | pendiente |
-| `ms-admin` | 9093 | `bd_admin` | Login de gestores (JWT), usuarios y roles | pendiente |
+| `ms-admin` | 9093 | `bd_admin` | Login de gestores (JWT), usuarios y roles | ✅ listo |
 | `ms-catalogo` | 9094 | `bd_catalogo` | Productos, servicios y categorías | ✅ listo |
 
 ## Requisitos
@@ -17,6 +17,11 @@ Proyecto DSY1105 · Desarrollo de Aplicaciones Móviles · Duoc UC.
 
 Cada carpeta es un proyecto Maven independiente (incluye `mvnw`, no hace falta instalar Maven).
 Las bases de datos se crean solas al iniciar.
+
+## Orden recomendado para probar
+1. Inicia `ms-admin` y haz login (ver `ms-admin/README.md`) para obtener un token.
+2. Inicia `ms-contenidos` y `ms-catalogo`: sus `GET` públicos funcionan sin token; crear, modificar, eliminar y las listas `/admin` piden el token.
+3. En Swagger usa el botón **Authorize** y pega el token.
 
 ## Cómo ejecutar un microservicio
 ```

@@ -49,5 +49,6 @@ curl -X POST http://localhost:9094/productos -H "Authorization: Bearer <token>" 
 ```
 
 ## Seguridad
+Para obtener un token: `POST http://localhost:9093/auth/login` (ver `ms-admin/README.md`). En Swagger usa el botón **Authorize**.
 Los tokens JWT se firman en `ms-admin` y este servicio solo los **valida** con la misma clave (`jwt.secret` en `application.properties`,
 o la variable de entorno `SECRET`). La clave debe ser idéntica en todos los microservicios.
